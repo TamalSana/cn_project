@@ -1,6 +1,7 @@
 # LAN File Request Client and Server
 
-A Python TCP socket program that lets a client request and download a file from a server on the same LAN.
+A Python TCP socket program that lets a client request and download a file from a server on the same LAN. 
+Each lab sub-directory has: i)writeup(.html) ii)cpt project file(.cpt) {binary format}
 
 ## How it works
 
@@ -17,22 +18,6 @@ A Python TCP socket program that lets a client request and download a file from 
 - On another device, replace `localhost` in `record_client.py` with the server device's IPv4 address.
 
 Find the server IPv4 address from Windows PowerShell:
-
-```powershell
-ipconfig
-```
-
-Change the client connection line:
-
-```python
-c.connect(('SERVER_IP_ADDRESS', 9999))
-```
-
-Example:
-
-```python
-c.connect(('192.168.1.50', 9999))
-```
 
 ## Run in Visual Studio Code
 
@@ -64,13 +49,13 @@ python record_client.py
 Enter a relative file path when prompted:
 
 ```text
-exp/3/writeup.md
+exp/1/lab1.pkt
 ```
 
 The downloaded file will be saved to:
 
 ```text
-recv-folder/writeup.md
+recv-folder
 ```
 
 ## Run client and server on one computer
@@ -81,6 +66,11 @@ In `record_client.py`, use:
 c.connect(('localhost', 9999))
 ```
 
+## Test: Client and server on PC + wsl:
+
+```python
+c.connect(('server device ip', 9999))
+```
 
 
 
