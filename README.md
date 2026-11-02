@@ -81,41 +81,6 @@ In `record_client.py`, use:
 c.connect(('localhost', 9999))
 ```
 
-Start `record_server.py` in Terminal 1 and `record_client.py` in Terminal 2 as shown above.
 
-## Run on two Windows devices
 
-On the server device, Terminal 1:
 
-```powershell
-python record_server.py
-```
-
-On the client device, Terminal 2:
-
-```powershell
-python record_client.py
-```
-
-The client device must first use the server's IPv4 address in `record_client.py`.
-
-## Allow the server port in Windows Firewall
-
-Run this once in an Administrator PowerShell:
-
-```powershell
-New-NetFirewallRule -DisplayName "Python File Server" -Direction Inbound -Protocol TCP -LocalPort 9999 -Action Allow
-```
-
-## Troubleshooting
-
-- `Connection refused`: start the server and verify the configured IP address.
-- `File not found`: enter a path relative to the project directory, without a leading `D:\` path.
-- Port conflict: stop the previous server process before starting another one.
-- Test reachability from another Windows terminal:
-
-```powershell
-Test-NetConnection SERVER_IP_ADDRESS -Port 9999
-```
-
-`TcpTestSucceeded : True` means the server port is reachable.
