@@ -2,7 +2,7 @@ import socket
 import os
 
 c = socket.socket()
-c.connect(('172.22.224.1', 9999))
+c.connect(('localhost', 9999))
 
 requested_file = input("Enter record path (for example exp/3/writeup.md): ").strip().replace('\\', '/')
 c.send(requested_file.encode('utf-8'))
