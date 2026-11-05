@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3: DNS and Web Server Configuration</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; color: #333; background: #f9f9f9; }
+        .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #0056b3; border-bottom: 2px solid #eaeaea; padding-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Computer Networks Laboratory</h1>
+    <h2>Experiment 3: DNS & Web Server Configuration</h2>
+    
+    <h3>Aim</h3>
+    <p>To configure a local Domain Name System (DNS) server and a Web Server in Cisco Packet Tracer, map a custom domain name (<code>vitap-cn-lab.ac.in</code>) to the web server's IP address, and successfully access the web page from client PCs.</p>
+    
+    <h3>Network Addressing Scheme</h3>
+    <table>
+        <tr><th>Device Name</th><th>Role / Function</th><th>IP Address</th><th>Subnet Mask</th><th>DNS Server Config</th></tr>
+        <tr><td>DNS Server0</td><td>Name Resolution (DNS)</td><td>10.0.0.1</td><td>255.0.0.0</td><td>N/A</td></tr>
+        <tr><td>Web Server1</td><td>HTTP Hosting (Web)</td><td>10.0.0.2</td><td>255.0.0.0</td><td>10.0.0.1</td></tr>
+        <tr><td>PC0 - PC2</td><td>Client Workstations</td><td>10.0.0.5 - .7</td><td>255.0.0.0</td><td>10.0.0.1</td></tr>
+    </table>
+
+    <h3>Server Configuration Steps</h3>
+    <ol>
+        <li><strong>DNS Server:</strong> Set DNS Service to ON. Add A Record mapping <code>vitap-cn-lab.ac.in</code> to <code>10.0.0.2</code>.</li>
+        <li><strong>Web Server:</strong> Edit <code>index.html</code> under HTTP service tab to host custom university web content.</li>
+        <li><strong>Client Configuration:</strong> Configure static IP and point DNS Server IP to <code>10.0.0.1</code>.</li>
+    </ol>
+
+    <h3>Verification</h3>
+    <p>Opening the Web Browser on client PCs and navigating to <code>http://vitap-cn-lab.ac.in</code> successfully loads the hosted HTML page.</p>
+
+    <h3>Conclusion</h3>
+    <p>The local DNS Server and Web Server were successfully integrated. Client machines successfully resolved domain names and loaded the web pages over HTTP.</p>
+</div>
+</body>
+</html>
