@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2: VLAN Configuration and Trunking</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; color: #333; background: #f9f9f9; }
+        .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #0056b3; border-bottom: 2px solid #eaeaea; padding-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Computer Networks Laboratory</h1>
+    <h2>Experiment 2: VLAN Configuration & Inter-Switch Trunking</h2>
+    
+    <h3>Aim</h3>
+    <p>To configure Virtual Local Area Networks (VLANs) across multiple switches (AB1 and AB2) and set up a trunk link between them to allow inter-switch VLAN communication.</p>
+    
+    <h3>VLAN Allocation Scheme</h3>
+    <table>
+        <tr><th>VLAN ID</th><th>VLAN Name</th><th>Subnet</th><th>Access Interfaces (AB1)</th><th>Access Interfaces (AB2)</th></tr>
+        <tr><td>10</td><td>SCOPE</td><td>192.168.1.0/24</td><td>Fa0/1 - Fa0/2</td><td>Fa0/1 - Fa0/2</td></tr>
+        <tr><td>20</td><td>SENSE</td><td>192.168.1.0/24</td><td>Fa0/3 - Fa0/4</td><td>Fa0/3 - Fa0/4</td></tr>
+        <tr><td>30</td><td>CTS</td><td>192.168.2.0/24</td><td>Fa0/5 - Fa0/6</td><td>Fa0/5 - Fa0/6</td></tr>
+    </table>
+
+    <h3>Switch CLI Configuration Snippet</h3>
+    <pre>
+AB1> enable
+AB1# configure terminal
+AB1(config)# vlan 10
+AB1(config-vlan)# name SCOPE
+AB1(config-vlan)# exit
+
+AB1(config)# interface range fastEthernet 0/1-2
+AB1(config-if-range)# switchport mode access
+AB1(config-if-range)# switchport access vlan 10
+AB1(config-if-range)# exit
+
+! Configure Trunk Port
+AB1(config)# interface gigabitEthernet 0/1
+AB1(config-if)# switchport mode trunk
+    </pre>
+
+    <h3>Conclusion</h3>
+    <p>VLANs SCOPE, SENSE, and CTS were successfully created across switches AB1 and AB2. Trunking enabled communication between hosts in the same VLAN across different switches while maintaining broadcast domain isolation.</p>
+</div>
+</body>
+</html>
